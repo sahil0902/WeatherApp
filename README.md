@@ -25,7 +25,19 @@ A live demo of the application can be found [here.](https://res.cloudinary.com/d
 Installation
 ------------
 
-Follow these steps to set up the project locally:1. Clone the repository: \`git clone https://github.com/yourusername/weather-app.git\`2. Install dependencies: \`npm install\`3. Create a \`.env\` file in the root directory and add your API keys:    \`\`\`    VITE\_WEATHERKEY=your\_openweather\_api\_key    VITE\_MAPAPIKEY=your\_mapbox\_api\_key    \`\`\`4. Run the app: \`npm start\`
+Follow these steps to set up the project locally:
+
+1.  **Clone the repository: gh repo clone sahil0902/WeatherApp**
+    
+2.  Navigate to the project directory:cd WeatherApp
+    
+3.  Install dependencies:npm install
+    
+4.  **Create a .env file in the root directory and add your API keys**
+    VITE\_WEATHERKEY=your\_openweather\_api\_key
+    VITE\_MAPAPIKEY=your\_mapbox\_api\_key
+
+5.Run the app: npm start
 
 The app should now be running on http://localhost:3000.
 
@@ -63,7 +75,3 @@ Code Overview
     
 4.  **Glob.jsx**: The component that integrates Mapbox GL to display an interactive map.
     
-
-### File Structure
-
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   /  ├── public/  ├── src/  │   ├── components/  │   │   ├── SearchBox.jsx  │   │   ├── InfoBox.jsx  │   │   ├── Globe.jsx  │   │   ├── WeatherApp.jsx          |—-(Other)….  │   ├── App.jsx  │   ├── index.css  │   ├── main.jsx  ├── .env  ├── .gitignore  ├── package.json  ├── README.md   `
