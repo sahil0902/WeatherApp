@@ -21,7 +21,7 @@ export default function SearchBox({ updateInfo, updateCity, updateLoc }) {
     const [city, setCity] = useState('');
     const [loading, setLoading] = useState(false);
       // API URL and key for OpenWeatherMap
-    const URL = `http://api.openweathermap.org/data/2.5/weather`;
+    const URL = `https://api.openweathermap.org/data/2.5/weather`;
     const key = `${import.meta.env.VITE_WEATHERKEY}`;
 /**
    * Fetches weather information for a given city name
@@ -82,7 +82,7 @@ export default function SearchBox({ updateInfo, updateCity, updateLoc }) {
 
             // Reverse geocoding
             try {
-                const response = await axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${newLoc.lat}&lon=${newLoc.lon}&limit=1&appid=${key}`);
+                const response = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${newLoc.lat}&lon=${newLoc.lon}&limit=1&appid=${key}`);
                 if (response.data && response.data.length > 0) {
                     const cityName = response.data[0].name;
                     setCity(cityName);
