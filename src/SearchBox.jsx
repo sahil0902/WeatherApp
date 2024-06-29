@@ -7,8 +7,7 @@ import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
 import CircularProgress from '@mui/material/CircularProgress';
 import './SearchBox.css';
 import axios from 'axios';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons';
+import PinDropIcon from '@mui/icons-material/PinDrop';
 /**
  * A React component that allows users to search for weather information by city name or current location.
  *
@@ -105,10 +104,10 @@ export default function SearchBox({ updateInfo, updateCity, updateLoc }) {
     };
 
     return (
-        <div className='searchBox'>
-            <form onSubmit={handleSubmit} className='searchForm'>
+        <div className='search-box'>
+            <form onSubmit={handleSubmit} className='search-form'>
                 {/* Input box for city name */}
-                <Box className='inputBox'>
+                <Box className='input-box'>
                     <City sx={{ color: 'action.active', mr: 1, my: 0.5, mt: 2.5 }} />
                     <TextField onChange={handleChange} id="city" label="City Name" variant="standard" required value={city} />
                 </Box>
@@ -120,7 +119,9 @@ export default function SearchBox({ updateInfo, updateCity, updateLoc }) {
             </form>
             <br />
             {/* Button for fetching current location */}
-            <Button onClick={fetchCurrentLocation} variant="contained" color="primary" endIcon={loading ? <CircularProgress size={20} /> : <FontAwesomeIcon icon={faLocationCrosshairs} />}>
+            <Button variant="outlined" onClick={fetchCurrentLocation} color="primary" endIcon={loading ? <CircularProgress size={20}
+            
+            /> : <PinDropIcon />}>
     {loading ? 'Locating...' : 'Locate'}
 </Button>
         </div>

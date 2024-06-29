@@ -37,14 +37,15 @@ export default function InfoBox({ info }) {
   const hasData = info && info.City;
 
   return (
-    <div className="InfoBox">
+    <div className="info-box">
+
       {hasData ? (
         <Card sx={{ maxWidth: 345 }} style={{ background: "Transparent" }}>
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography className='weather-header' gutterBottom variant="h5" component="div">
               {info.City} - {info.weather}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography className='weather-details' variant="body2" color="text.secondary">
               Temperature: {(info.temp?.toFixed(2) ?? 'N/A')}°C<br />
               Feels Like: {(info.feels_like?.toFixed(2) ?? 'N/A')}°C<br />
               Min Temp: {(info.min_temp?.toFixed(2) ?? 'N/A')}°C<br />
@@ -53,7 +54,7 @@ export default function InfoBox({ info }) {
             </Typography>
           </CardContent>
         </Card>
-      ) : "☁️"}
+      ) : "☁️ Search by Name or Click on Locate"}
     </div>
   );
 }

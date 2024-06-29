@@ -1,46 +1,77 @@
-.searchBox {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
+/* SearchBox.css */
+
+.search-box {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    width: 90%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: 1rem;
 }
 
-.searchForm {
+.search-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
-.inputBox {
+.input-box {
+    margin-bottom: 10px;
+}
+
+.MuiTextField-root {
+    width: 100%;
+}
+
+.MuiOutlinedInput-root {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.search-buttons {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
 }
 
-button {
-    margin-top: 20px;
+.MuiButton-root {
+    flex: 1;
+    margin: 0 5px;
 }
 
-button:disabled {
-    background-color: lightgrey;
+.MuiButton-contained {
+    background-color: #2196f3;
 }
 
-.MuiCircularProgress-root {
-    margin-left: 10px;
+.MuiButton-outlined {
+    color: #2196f3;
+    border-color: #2196f3;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
+.MuiButton-root:hover {
+    opacity: 0.9;
+}
+
+@media (max-width: 600px) {
+    .search-box {
+        width: 95%;
+        padding: 10px;
     }
-    to {
-        opacity: 1;
-    }
+}
+.search-form, .search-box > button {
+    width: 100%; /* Ensures that the form and the button outside the form take the full width of their parent */
+    display: flex;
+    justify-content: center;
 }
 
-input,
-button {
-    animation: fadeIn 0.5s ease-in-out;
+.search-form button, .search-box > button {
+    flex: 1; /* This makes the buttons flex items that expand to fill the available space */
+  
 }

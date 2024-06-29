@@ -1,14 +1,78 @@
-.InfoBox {
-  position: fixed;
-  top: 0;
-  left: 0;
-  transform: translate(0, 0);
-  text-align: center;
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-  border-radius: 10px;
-  margin-top: 1rem;
-  margin-left: 1rem;
-  padding: 20px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+.info-box {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: 90%;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.MuiCard-root {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.MuiCardContent-root {
+  padding: 0 !important;
+}
+
+.weather-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.weather-icon {
+  font-size: 48px;
+  margin-right: 15px;
+}
+
+.city-name {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.temperature {
+  font-size: 3 ;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.weather-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.weather-detail-item {
+  display: flex;
+  align-items: center;
+}
+
+.weather-detail-icon {
+  margin-right: 8px;
+}
+
+@media (max-width: 600px) {
+  .info-box {
+    width: 95%;
+    padding: 15px;
+  }
+  
+  .city-name {
+    font-size: 20px;
+  }
+  
+  .temperature {
+    font-size: 30px;
+  }
 }

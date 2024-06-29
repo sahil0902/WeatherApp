@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import axios from 'axios';
-
+import './map.css';
 mapboxgl.accessToken = `${import.meta.env.VITE_MAPAPIKEY}`;
 
 const MapComponent = ({ loc, city,weatherCondition }) => {
@@ -14,7 +14,7 @@ const mapStyles = {
     clouds: 'mapbox://styles/mapbox/light-v10',
     rain: 'mapbox://styles/mapbox/dark-v10',
     snow: 'mapbox://styles/mapbox/winter-v1',
-    default: 'mapbox://styles/mapbox/streets-v11'
+    default: 'mapbox://styles/mapbox/outdoors-v12'
 };
     useEffect(() => {
         const defaultCenter = [30, 15];
@@ -107,7 +107,11 @@ newMap.fitBounds(bounds, {
             map.setStyle(styleUrl);
         }
     }, [map, weatherCondition]);
-    return <div ref={mapRef} id="map" style={{ position: 'absolute', top: 0, bottom: 0, left:0,right:0, width: '100%' }} />;
+    return (
+        <div className="map-container">
+          <div  ref={mapRef} id="map" />
+        </div>
+      );
 };
 
 export default MapComponent;
