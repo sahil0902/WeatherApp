@@ -3,7 +3,7 @@ Weather App 🌤️
 
 A modern and interactive weather application built using React, Material-UI, and Mapbox GL, leveraging the OpenWeatherMap API to fetch weather data. This app allows users to search for weather information by city name or use their current location to get weather updates.
 
-Features
+Features ✨
 --------
 
 *   **Search by City**: Enter a city name to get the latest weather information.
@@ -44,7 +44,7 @@ The app should now be running on http://localhost:3000.
 Usage
 -----
 
-### Searching for a City
+### Searching for a City 🏙️
 
 1.  Enter the city name in the search box.
     
@@ -53,7 +53,7 @@ Usage
 3.  The weather information for the specified city will be displayed in the InfoBox, and the map will update to show the location.
     
 
-### Using Current Location
+### Using Current Location 
 
 1.  Click the "Locate" button.
     
