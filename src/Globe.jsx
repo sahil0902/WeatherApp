@@ -5,10 +5,17 @@ import axios from 'axios';
 
 mapboxgl.accessToken = `${import.meta.env.VITE_MAPAPIKEY}`;
 
-const MapComponent = ({ loc, city }) => {
+const MapComponent = ({ loc, city,weatherCondition }) => {
     const mapRef = useRef(null);
     const [map, setMap] = useState(null);
-
+// Define map styles for different weather conditions
+const mapStyles = {
+    clear: 'mapbox://styles/mapbox/navigation-day-v1',
+    clouds: 'mapbox://styles/mapbox/light-v10',
+    rain: 'mapbox://styles/mapbox/dark-v10',
+    snow: 'mapbox://styles/mapbox/winter-v1',
+    default: 'mapbox://styles/mapbox/streets-v11'
+};
     useEffect(() => {
         const defaultCenter = [30, 15];
         const zoomLevel = 1;
@@ -16,7 +23,7 @@ const MapComponent = ({ loc, city }) => {
             // Create a new map instance
             const newMap = new mapboxgl.Map({
                 container: 'map', // Specify the container element
-                style: 'mapbox://styles/mapbox/streets-v11', // Specify the map style
+                style: mapStyles.default,// Specify the map style
                 projection: 'globe', // Set the projection to globe
                 zoom: zoomLevel, // Set the initial zoom level
                 center: defaultCenter, // Set the initial center coordinates
@@ -24,6 +31,18 @@ const MapComponent = ({ loc, city }) => {
 
             // Add navigation control to the map
             newMap.addControl(new mapboxgl.NavigationControl());
+
+// Define the boundary coordinates (southwest and northeast corners of the bounding box)
+const bounds = [
+    [-74.04728500751165, 40.68392799015035], // Southwest coordinates
+    [-73.91015624999999, 40.87764500765852]  // Northeast coordinates
+];
+
+// Update the map view to fit the specified bounds
+newMap.fitBounds(bounds, {
+    padding: {top: 10, bottom:25, left: 15, right: 5}
+});
+
             setMap(newMap);
         }
 
@@ -31,11 +50,14 @@ const MapComponent = ({ loc, city }) => {
     }, [map]);
 
     useEffect(() => {
-        if (map && loc.lat && loc.lon) {
-            // If location coordinates are available, set the map center and zoom level accordingly
-            map.setCenter([loc.lon, loc.lat]);
-            map.setZoom(10);
-            mapRef.current.style.display = 'block';
+       if (map && loc.lat && loc.lon) {
+    // Use flyTo animation to smoothly transition to the new location and zoom level
+    map.flyTo({
+        center: [loc.lon, loc.lat],
+        zoom: 10
+    });
+    mapRef.current.style.display = 'block';
+
         } else if (map) {
             // If location coordinates are not available, reset the map center and zoom level
             map.setCenter([0, 0]);
@@ -77,8 +99,15 @@ const MapComponent = ({ loc, city }) => {
 
         geocodeCity();
     }, [map, city]);
-
-    return <div ref={mapRef} id="map" style={{ position: 'absolute', top: 0, bottom: 0, width: '100%' }} />;
+ // Update map style based on weather condition
+    useEffect(() => {
+        if (map && weatherCondition) {
+            const condition = weatherCondition.toLowerCase();
+            const styleUrl = mapStyles[condition] || mapStyles.default;
+            map.setStyle(styleUrl);
+        }
+    }, [map, weatherCondition]);
+    return <div ref={mapRef} id="map" style={{ position: 'absolute', top: 0, bottom: 0, left:0,right:0, width: '100%' }} />;
 };
 
 export default MapComponent;

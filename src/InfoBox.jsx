@@ -53,7 +53,7 @@ export default function InfoBox({ info }) {
             </Typography>
           </CardContent>
         </Card>
-      ) : null}
+      ) : "☁️"}
     </div>
   );
 }

@@ -58,7 +58,7 @@ export default function WeatherApp({ info, setInfo }) {
   return (
     <div className="weather-app">
       <h3>Weather App</h3>
-      <MapComponent loc={loc} city={city} />
+      <MapComponent loc={loc} city={city} weatherCondition={weatherInfo.weather}/>
       <Searchbox updateInfo={updateInfo} updateCity={updateCity} updateLoc={updateLoc} />
       <InfoBox info={weatherInfo} />
     </div>
